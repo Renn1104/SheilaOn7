@@ -1,151 +1,609 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>Sheila On 7 | Gallery & Fansite</title>
     <!-- Tailwind CSS + Font Awesome + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
-        .gallery-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .gallery-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2); }
-        .modal-overlay { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(4px); }
-        .modal-content { animation: fadeInUp 0.25s ease-out; }
-        @keyframes fadeInUp { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        .nav-active { color: #f97316; border-bottom: 2px solid #f97316; }
-        .member-card { transition: all 0.25s ease; }
-        .member-card:hover { transform: translateY(-8px); background: linear-gradient(145deg, #ffffff, #fef3c7); }
-        .custom-bg-pattern { background-image: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.05) 2%, transparent 2.5%); background-size: 28px 28px; }
-        .hero-banner-img { border-radius: 2rem; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.25); transition: transform 0.3s ease; }
-        .hero-banner-img:hover { transform: scale(1.02); }
+      * {
+        font-family: "Inter", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .gallery-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .gallery-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+      }
+      .modal-overlay {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+      }
+      .modal-content {
+        animation: fadeInUp 0.25s ease-out;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: scale(0.95) translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .nav-active {
+        color: #f97316;
+        border-bottom: 2px solid #f97316;
+      }
+      .member-card {
+        transition: all 0.25s ease;
+      }
+      .member-card:hover {
+        transform: translateY(-8px);
+        background: linear-gradient(145deg, #ffffff, #fef3c7);
+      }
+      .custom-bg-pattern {
+        background-image: radial-gradient(
+          circle at 10% 20%,
+          rgba(249, 115, 22, 0.05) 2%,
+          transparent 2.5%
+        );
+        background-size: 28px 28px;
+      }
+      .hero-banner-img {
+        border-radius: 2rem;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.3s ease;
+      }
+      .hero-banner-img:hover {
+        transform: scale(1.02);
+      }
     </style>
-</head>
-<body class="bg-white text-gray-800 custom-bg-pattern">
-
+  </head>
+  <body class="bg-white text-gray-800 custom-bg-pattern">
     <!-- NAVBAR -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-30 border-b border-orange-100">
-        <div class="container mx-auto px-5 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-guitar text-orange-500 text-2xl"></i>
-                <span class="font-bold text-2xl tracking-tight bg-gradient-to-r from-orange-700 to-orange-500 bg-clip-text text-transparent">Sheila On 7</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-lg font-medium">
-                <a href="#beranda" class="nav-link hover:text-orange-500 transition px-1 py-2">Beranda</a>
-                <a href="#profil" class="nav-link hover:text-orange-500 transition px-1 py-2">Profil</a>
-                <a href="#member" class="nav-link hover:text-orange-500 transition px-1 py-2">Member</a>
-                <a href="#galeri" class="nav-link hover:text-orange-500 transition px-1 py-2">Galeri</a>
-                <a href="#ekstra" class="nav-link hover:text-orange-500 transition px-1 py-2">Lainnya</a>
-            </div>
-            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none text-2xl"><i class="fas fa-bars"></i></button>
+    <nav
+      class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-30 border-b border-orange-100"
+    >
+      <div
+        class="container mx-auto px-5 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-guitar text-orange-500 text-2xl"></i>
+          <span
+            class="font-bold text-2xl tracking-tight bg-gradient-to-r from-orange-700 to-orange-500 bg-clip-text text-transparent"
+            >Sheila On 7</span
+          >
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md px-5 pb-4 flex flex-col space-y-3 border-t border-orange-100">
-            <a href="#beranda" class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium">Beranda</a>
-            <a href="#profil" class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium">Profil</a>
-            <a href="#member" class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium">Member</a>
-            <a href="#galeri" class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium">Galeri</a>
-            <a href="#ekstra" class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium">Lainnya</a>
+        <div class="hidden md:flex space-x-8 text-lg font-medium">
+          <a
+            href="#beranda"
+            class="nav-link hover:text-orange-500 transition px-1 py-2"
+            >Beranda</a
+          >
+          <a
+            href="#profil"
+            class="nav-link hover:text-orange-500 transition px-1 py-2"
+            >Profil</a
+          >
+          <a
+            href="#member"
+            class="nav-link hover:text-orange-500 transition px-1 py-2"
+            >Member</a
+          >
+          <a
+            href="#galeri"
+            class="nav-link hover:text-orange-500 transition px-1 py-2"
+            >Galeri</a
+          >
+          <a
+            href="#ekstra"
+            class="nav-link hover:text-orange-500 transition px-1 py-2"
+            >Lainnya</a
+          >
         </div>
+        <button
+          id="menu-btn"
+          class="md:hidden text-gray-700 focus:outline-none text-2xl"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden bg-white/95 backdrop-blur-md px-5 pb-4 flex flex-col space-y-3 border-t border-orange-100"
+      >
+        <a
+          href="#beranda"
+          class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium"
+          >Beranda</a
+        >
+        <a
+          href="#profil"
+          class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium"
+          >Profil</a
+        >
+        <a
+          href="#member"
+          class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium"
+          >Member</a
+        >
+        <a
+          href="#galeri"
+          class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium"
+          >Galeri</a
+        >
+        <a
+          href="#ekstra"
+          class="mobile-nav-link py-2 hover:text-orange-500 transition font-medium"
+          >Lainnya</a
+        >
+      </div>
     </nav>
 
     <main>
-        <!-- BERANDA dengan banner baru -->
-        <section id="beranda" class="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-orange-50 via-amber-50 to-white">
-            <div class="container mx-auto px-6 py-16 md:py-20 text-center md:text-left md:flex md:items-center md:justify-between gap-8">
-                <div class="md:w-1/2 space-y-5">
-                    <span class="inline-block bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-semibold tracking-wide">Legenda Rock Alternatif Indonesia</span>
-                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-800">Sheila On <span class="text-orange-500">7</span></h1>
-                    <p class="text-lg text-gray-600 max-w-lg">Perjalanan musikal yang menyentuh hati, dari Yogyakarta hingga panggung dunia. Karya abadi untuk generasi.</p>
-                    <div class="flex gap-4 justify-center md:justify-start">
-                        <a href="#galeri" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center gap-2"><i class="fas fa-images"></i> Jelajahi Galeri</a>
-                        <a href="#member" class="border-2 border-orange-400 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-full font-semibold transition">Kenali Member</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
-                    <div class="relative">
-                        <img src="https://omong-omong.com/wp-content/uploads/2022/01/Tak-berjudul8-1.jpg" alt="Sheila On 7 Banner" class="hero-banner-img w-full max-w-md md:max-w-lg rounded-3xl shadow-2xl object-cover border-4 border-white/60">
-                    </div>
-                </div>
+      <!-- BERANDA dengan banner baru -->
+      <section
+        id="beranda"
+        class="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-orange-50 via-amber-50 to-white"
+      >
+        <div
+          class="container mx-auto px-6 py-16 md:py-20 text-center md:text-left md:flex md:items-center md:justify-between gap-8"
+        >
+          <div class="md:w-1/2 space-y-5">
+            <span
+              class="inline-block bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-semibold tracking-wide"
+              >Legenda Rock Alternatif Indonesia</span
+            >
+            <h1
+              class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-800"
+            >
+              Sheila On <span class="text-orange-500">7</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-lg">
+              Perjalanan musikal yang menyentuh hati, dari Yogyakarta hingga
+              panggung dunia. Karya abadi untuk generasi.
+            </p>
+            <div class="flex gap-4 justify-center md:justify-start">
+              <a
+                href="#galeri"
+                class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center gap-2"
+                ><i class="fas fa-images"></i> Jelajahi Galeri</a
+              >
+              <a
+                href="#member"
+                class="border-2 border-orange-400 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-full font-semibold transition"
+                >Kenali Member</a
+              >
             </div>
-        </section>
+          </div>
+          <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+            <div class="relative">
+              <img
+                src="https://omong-omong.com/wp-content/uploads/2022/01/Tak-berjudul8-1.jpg"
+                alt="Sheila On 7 Banner"
+                class="hero-banner-img w-full max-w-md md:max-w-lg rounded-3xl shadow-2xl object-cover border-4 border-white/60"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- PROFIL BAND -->
-        <section id="profil" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2">Profil Band</h2>
-                    <p class="text-gray-500 mt-3 max-w-xl mx-auto">Kisah perjalanan musik yang membumi dan penuh inspirasi</p>
-                </div>
-                <div class="flex flex-col lg:flex-row gap-12 items-center">
-                    <div class="lg:w-1/2"><img src="https://picsum.photos/id/104/600/400" alt="Sheila On 7 vibe" class="rounded-2xl shadow-2xl object-cover w-full h-80 lg:h-auto"></div>
-                    <div class="lg:w-1/2 space-y-5">
-                        <div class="flex items-center gap-2 text-orange-500 text-xl font-bold"><i class="fas fa-calendar-alt"></i> <span>Sejak 1996</span></div>
-                        <p class="text-gray-700 leading-relaxed">Sheila On 7 adalah grup musik yang dibentuk di Yogyakarta pada 6 Mei 1996. Formasi awal terdiri dari Duta (vokal), Adam (bass), Eross (gitar), dan Anton (drum). Dengan aliran pop-rock alternatif, mereka berhasil mencuri perhatian lewat album pertama "Sheila On 7" (1999) yang meledak di pasaran.</p>
-                        <p class="text-gray-700 leading-relaxed">Lagu-lagu legendaris seperti "Dan", "Sephia", "Anugerah Terindah Yang Pernah Kumiliki", "Melompat Lebih Tinggi" menjadi soundtrack generasi 2000-an hingga sekarang. Lebih dari 2 dekade, Sheila On 7 tetap eksis dan dicintai oleh penggemar setia, dikenal sebagai "SO7" dengan energi panggung yang membara.</p>
-                        <div class="flex flex-wrap gap-3 pt-3">
-                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">🎸 7 Album Studio</span>
-                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">🏆 AMI Awards</span>
-                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">🎤 25+ Tahun Berkarya</span>
-                        </div>
-                    </div>
-                </div>
+      <!-- PROFIL BAND -->
+      <section id="profil" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2
+              class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2"
+            >
+              Profil Band
+            </h2>
+            <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+              Kisah perjalanan musik yang membumi dan penuh inspirasi
+            </p>
+          </div>
+          <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <div class="lg:w-1/2">
+              <img
+                src="https://picsum.photos/id/104/600/400"
+                alt="Sheila On 7 vibe"
+                class="rounded-2xl shadow-2xl object-cover w-full h-80 lg:h-auto"
+              />
             </div>
-        </section>
+            <div class="lg:w-1/2 space-y-5">
+              <div
+                class="flex items-center gap-2 text-orange-500 text-xl font-bold"
+              >
+                <i class="fas fa-calendar-alt"></i> <span>Sejak 1996</span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                Sheila On 7 adalah grup musik yang dibentuk di Yogyakarta pada 6
+                Mei 1996. Formasi awal terdiri dari Duta (vokal), Adam (bass),
+                Eross (gitar), dan Anton (drum). Dengan aliran pop-rock
+                alternatif, mereka berhasil mencuri perhatian lewat album
+                pertama "Sheila On 7" (1999) yang meledak di pasaran.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Lagu-lagu legendaris seperti "Dan", "Sephia", "Anugerah Terindah
+                Yang Pernah Kumiliki", "Melompat Lebih Tinggi" menjadi
+                soundtrack generasi 2000-an hingga sekarang. Lebih dari 2
+                dekade, Sheila On 7 tetap eksis dan dicintai oleh penggemar
+                setia, dikenal sebagai "SO7" dengan energi panggung yang
+                membara.
+              </p>
+              <div class="flex flex-wrap gap-3 pt-3">
+                <span
+                  class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm"
+                  >🎸 7 Album Studio</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm"
+                  >🏆 AMI Awards</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm"
+                  >🎤 25+ Tahun Berkarya</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- MEMBER -->
-        <section id="member" class="py-20 bg-gradient-to-b from-amber-50 to-orange-50/30">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2">Member Resmi</h2>
-                    <p class="text-gray-500 mt-3">Para arsitek harmoni yang menghidupkan karya-karya abadi</p>
+      <!-- MEMBER -->
+      <section
+        id="member"
+        class="py-20 bg-gradient-to-b from-amber-50 to-orange-50/30"
+      >
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2
+              class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2"
+            >
+              Member Resmi
+            </h2>
+            <p class="text-gray-500 mt-3">
+              Para arsitek harmoni yang menghidupkan karya-karya abadi
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"
+            >
+              <div class="bg-orange-100 h-44 flex items-center justify-center">
+                <i class="fas fa-user-circle text-7xl text-orange-400"></i>
+              </div>
+              <div class="p-5">
+                <h3 class="text-2xl font-bold">Akhdiyat Duta Modjo</h3>
+                <p class="text-orange-500 font-semibold">Vokalis</p>
+                <p class="text-gray-500 text-sm mt-2">
+                  Suara khas yang emosional & karismatik, penulis lirik utama.
+                </p>
+                <div class="flex justify-center gap-3 mt-3 text-orange-400">
+                  <i class="fab fa-instagram"></i><i class="fab fa-twitter"></i>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"><div class="bg-orange-100 h-44 flex items-center justify-center"><i class="fas fa-user-circle text-7xl text-orange-400"></i></div><div class="p-5"><h3 class="text-2xl font-bold">Akhdiyat Duta Modjo</h3><p class="text-orange-500 font-semibold">Vokalis</p><p class="text-gray-500 text-sm mt-2">Suara khas yang emosional & karismatik, penulis lirik utama.</p><div class="flex justify-center gap-3 mt-3 text-orange-400"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div></div>
-                    <div class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"><div class="bg-orange-100 h-44 flex items-center justify-center"><i class="fas fa-bass-guitar text-7xl text-orange-400"></i></div><div class="p-5"><h3 class="text-2xl font-bold">Adam Muhammad Subarkah</h3><p class="text-orange-500 font-semibold">Bassist</p><p class="text-gray-500 text-sm mt-2">Groove solid, fondasi ritme yang tak tergantikan.</p><div class="flex justify-center gap-3 mt-3 text-orange-400"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div></div>
-                    <div class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"><div class="bg-orange-100 h-44 flex items-center justify-center"><i class="fas fa-guitar text-7xl text-orange-400"></i></div><div class="p-5"><h3 class="text-2xl font-bold">Eross Candra</h3><p class="text-orange-500 font-semibold">Gitaris / Produser</p><p class="text-gray-500 text-sm mt-2">Riff gitar ikonik dan aransemen musik jenius.</p><div class="flex justify-center gap-3 mt-3 text-orange-400"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div></div>
-                    <div class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"><div class="bg-orange-100 h-44 flex items-center justify-center"><i class="fas fa-drum text-7xl text-orange-400"></i></div><div class="p-5"><h3 class="text-2xl font-bold">Brian Kresna Putro</h3><p class="text-orange-500 font-semibold">Drummer</p><p class="text-gray-500 text-sm mt-2">Energi panggung dan permainan drum yang dinamis.</p><div class="flex justify-center gap-3 mt-3 text-orange-400"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div></div>
-                </div>
-                <p class="text-center text-gray-500 text-sm mt-8 italic">*Anton (drummer era awal) turut berjasa membentuk warna awal Sheila On 7.</p>
+              </div>
             </div>
-        </section>
+            <div
+              class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"
+            >
+              <div class="bg-orange-100 h-44 flex items-center justify-center">
+                <i class="fas fa-bass-guitar text-7xl text-orange-400"></i>
+              </div>
+              <div class="p-5">
+                <h3 class="text-2xl font-bold">Adam Muhammad Subarkah</h3>
+                <p class="text-orange-500 font-semibold">Bassist</p>
+                <p class="text-gray-500 text-sm mt-2">
+                  Groove solid, fondasi ritme yang tak tergantikan.
+                </p>
+                <div class="flex justify-center gap-3 mt-3 text-orange-400">
+                  <i class="fab fa-instagram"></i><i class="fab fa-twitter"></i>
+                </div>
+              </div>
+            </div>
+            <div
+              class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"
+            >
+              <div class="bg-orange-100 h-44 flex items-center justify-center">
+                <i class="fas fa-guitar text-7xl text-orange-400"></i>
+              </div>
+              <div class="p-5">
+                <h3 class="text-2xl font-bold">Eross Candra</h3>
+                <p class="text-orange-500 font-semibold">Gitaris / Produser</p>
+                <p class="text-gray-500 text-sm mt-2">
+                  Riff gitar ikonik dan aransemen musik jenius.
+                </p>
+                <div class="flex justify-center gap-3 mt-3 text-orange-400">
+                  <i class="fab fa-instagram"></i><i class="fab fa-twitter"></i>
+                </div>
+              </div>
+            </div>
+            <div
+              class="member-card bg-white rounded-2xl shadow-lg overflow-hidden text-center"
+            >
+              <div class="bg-orange-100 h-44 flex items-center justify-center">
+                <i class="fas fa-drum text-7xl text-orange-400"></i>
+              </div>
+              <div class="p-5">
+                <h3 class="text-2xl font-bold">Brian Kresna Putro</h3>
+                <p class="text-orange-500 font-semibold">Drummer</p>
+                <p class="text-gray-500 text-sm mt-2">
+                  Energi panggung dan permainan drum yang dinamis.
+                </p>
+                <div class="flex justify-center gap-3 mt-3 text-orange-400">
+                  <i class="fab fa-instagram"></i><i class="fab fa-twitter"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-gray-500 text-sm mt-8 italic">
+            *Anton (drummer era awal) turut berjasa membentuk warna awal Sheila
+            On 7.
+          </p>
+        </div>
+      </section>
 
-        <!-- GALERI -->
-        <section id="galeri" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12"><h2 class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2">Momen Galeri</h2><p class="text-gray-500 mt-3">Jejak perjalanan, konser, dan kebersamaan Sheila On 7</p></div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/129/800/600"><img src="https://picsum.photos/id/129/400/300" alt="Konser Sheila" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">🎸 Konser Legendaris 2000</p></div></div>
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/145/800/600"><img src="https://picsum.photos/id/145/400/300" alt="Behind The Scene" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">🎤 Sesi Rekam Album</p></div></div>
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/155/800/600"><img src="https://picsum.photos/id/155/400/300" alt="Penampilan Festival" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">✨ Panggung Festival Internasional</p></div></div>
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/168/800/600"><img src="https://picsum.photos/id/168/400/300" alt="Jumpa Fans" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">🤝 Meet & Greet with SO7</p></div></div>
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/96/800/600"><img src="https://picsum.photos/id/96/400/300" alt="Tour 2023" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">🎶 Tur Reuni 2023</p></div></div>
-                    <div class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100" data-img="https://picsum.photos/id/169/800/600"><img src="https://picsum.photos/id/169/400/300" alt="Malam Puncak HUT" class="w-full h-56 object-cover"><div class="p-3 bg-white"><p class="font-semibold">🎂 Anniversary 25 Tahun</p></div></div>
-                </div>
+      <!-- GALERI -->
+      <section id="galeri" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2
+              class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2"
+            >
+              Momen Galeri
+            </h2>
+            <p class="text-gray-500 mt-3">
+              Jejak perjalanan, konser, dan kebersamaan Sheila On 7
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/129/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/129/400/300"
+                alt="Konser Sheila"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">🎸 Konser Legendaris 2000</p>
+              </div>
             </div>
-        </section>
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/145/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/145/400/300"
+                alt="Behind The Scene"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">🎤 Sesi Rekam Album</p>
+              </div>
+            </div>
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/155/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/155/400/300"
+                alt="Penampilan Festival"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">✨ Panggung Festival Internasional</p>
+              </div>
+            </div>
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/168/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/168/400/300"
+                alt="Jumpa Fans"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">🤝 Meet & Greet with SO7</p>
+              </div>
+            </div>
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/96/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/96/400/300"
+                alt="Tour 2023"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">🎶 Tur Reuni 2023</p>
+              </div>
+            </div>
+            <div
+              class="gallery-card cursor-pointer rounded-xl overflow-hidden shadow-md bg-gray-100"
+              data-img="https://picsum.photos/id/169/800/600"
+            >
+              <img
+                src="https://picsum.photos/id/169/400/300"
+                alt="Malam Puncak HUT"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-3 bg-white">
+                <p class="font-semibold">🎂 Anniversary 25 Tahun</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- EKSTRA / LAINNYA -->
-        <section id="ekstra" class="py-20 bg-orange-50/40">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-10"><h2 class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2">Lainnya & Komunitas</h2><p class="text-gray-500 mt-2">Ikuti terus aktivitas dan diskografi Sheila On 7</p></div>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="bg-white p-6 rounded-2xl shadow-md"><div class="flex items-center gap-3 text-orange-600 text-2xl mb-4"><i class="fas fa-compact-disc"></i><h3 class="text-2xl font-bold">Diskografi Pilihan</h3></div><ul class="space-y-3 text-gray-700"><li class="flex items-center gap-2"><i class="fas fa-music text-orange-400"></i> <span class="font-semibold">Sheila On 7 (1999)</span> – Dan, Sephia, Pepeha</li><li class="flex items-center gap-2"><i class="fas fa-music text-orange-400"></i> <span class="font-semibold">Kisah Klasik Untuk Masa Depan (2000)</span> – Anugerah Terindah</li><li class="flex items-center gap-2"><i class="fas fa-music text-orange-400"></i> <span class="font-semibold">07 Des (2002)</span> – Melompat Lebih Tinggi</li><li class="flex items-center gap-2"><i class="fas fa-music text-orange-400"></i> <span class="font-semibold">Sheila On 7 (OST. 30 Hari Mencari Cinta)</span> – Hari Bersamanya</li><li class="flex items-center gap-2"><i class="fas fa-music text-orange-400"></i> <span class="font-semibold">Berlayar (2021)</span> – Single fenomenal</li></ul></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-md"><div class="flex items-center gap-3 text-orange-600 text-2xl mb-4"><i class="fas fa-globe"></i><h3 class="text-2xl font-bold">Ikuti Kami</h3></div><p class="text-gray-600 mb-4">Tetap terhubung dengan update terbaru Sheila On 7, merchandise, dan tur.</p><div class="flex flex-wrap gap-5 justify-start mb-6"><a href="#" class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"><i class="fab fa-instagram text-xl"></i></a><a href="#" class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"><i class="fab fa-twitter text-xl"></i></a><a href="#" class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"><i class="fab fa-youtube text-xl"></i></a><a href="#" class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"><i class="fab fa-spotify text-xl"></i></a></div><div class="bg-orange-100 p-4 rounded-xl"><p class="flex items-center gap-2 text-gray-700"><i class="fas fa-envelope text-orange-500"></i> fanclub@sheilaon7official.com</p><p class="flex items-center gap-2 text-gray-700 mt-2"><i class="fas fa-map-marker-alt text-orange-500"></i> Yogyakarta, Indonesia</p></div></div>
-                </div>
-                <div class="mt-12 text-center bg-white/60 p-6 rounded-2xl shadow-sm border border-orange-200"><i class="fas fa-quote-left text-orange-300 text-3xl mb-2"></i><p class="text-gray-700 italic text-lg">"Musik kami adalah cerita tentang cinta, kehidupan, dan harapan. Terima kasih untuk SO7 Lovers yang selalu setia." — Duta</p></div>
+      <!-- EKSTRA / LAINNYA -->
+      <section id="ekstra" class="py-20 bg-orange-50/40">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-10">
+            <h2
+              class="text-4xl font-bold text-gray-800 inline-block border-b-4 border-orange-400 pb-2"
+            >
+              Lainnya & Komunitas
+            </h2>
+            <p class="text-gray-500 mt-2">
+              Ikuti terus aktivitas dan diskografi Sheila On 7
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div
+                class="flex items-center gap-3 text-orange-600 text-2xl mb-4"
+              >
+                <i class="fas fa-compact-disc"></i>
+                <h3 class="text-2xl font-bold">Diskografi Pilihan</h3>
+              </div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-music text-orange-400"></i>
+                  <span class="font-semibold">Sheila On 7 (1999)</span> – Dan,
+                  Sephia, Pepeha
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-music text-orange-400"></i>
+                  <span class="font-semibold"
+                    >Kisah Klasik Untuk Masa Depan (2000)</span
+                  >
+                  – Anugerah Terindah
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-music text-orange-400"></i>
+                  <span class="font-semibold">07 Des (2002)</span> – Melompat
+                  Lebih Tinggi
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-music text-orange-400"></i>
+                  <span class="font-semibold"
+                    >Sheila On 7 (OST. 30 Hari Mencari Cinta)</span
+                  >
+                  – Hari Bersamanya
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-music text-orange-400"></i>
+                  <span class="font-semibold">Berlayar (2021)</span> – Single
+                  fenomenal
+                </li>
+              </ul>
             </div>
-        </section>
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div
+                class="flex items-center gap-3 text-orange-600 text-2xl mb-4"
+              >
+                <i class="fas fa-globe"></i>
+                <h3 class="text-2xl font-bold">Ikuti Kami</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Tetap terhubung dengan update terbaru Sheila On 7, merchandise,
+                dan tur.
+              </p>
+              <div class="flex flex-wrap gap-5 justify-start mb-6">
+                <a
+                  href="#"
+                  class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"
+                  ><i class="fab fa-instagram text-xl"></i></a
+                ><a
+                  href="#"
+                  class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"
+                  ><i class="fab fa-twitter text-xl"></i></a
+                ><a
+                  href="#"
+                  class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"
+                  ><i class="fab fa-youtube text-xl"></i></a
+                ><a
+                  href="#"
+                  class="bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center transition"
+                  ><i class="fab fa-spotify text-xl"></i
+                ></a>
+              </div>
+              <div class="bg-orange-100 p-4 rounded-xl">
+                <p class="flex items-center gap-2 text-gray-700">
+                  <i class="fas fa-envelope text-orange-500"></i>
+                  fanclub@sheilaon7official.com
+                </p>
+                <p class="flex items-center gap-2 text-gray-700 mt-2">
+                  <i class="fas fa-map-marker-alt text-orange-500"></i>
+                  Yogyakarta, Indonesia
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-12 text-center bg-white/60 p-6 rounded-2xl shadow-sm border border-orange-200"
+          >
+            <i class="fas fa-quote-left text-orange-300 text-3xl mb-2"></i>
+            <p class="text-gray-700 italic text-lg">
+              "Musik kami adalah cerita tentang cinta, kehidupan, dan harapan.
+              Terima kasih untuk SO7 Lovers yang selalu setia." — Duta
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-8"><div class="container mx-auto px-6 text-center"><div class="flex justify-center gap-6 mb-4 text-orange-400 text-xl"><i class="fab fa-spotify"></i><i class="fab fa-apple"></i><i class="fab fa-youtube"></i></div><p class="text-sm text-gray-400">© 2026 Sheila On 7 Fan Gallery — Untuk para pecinta musik Indonesia. All rights reserved.</p><p class="text-xs text-gray-500 mt-2">Didedikasikan untuk seluruh SO7 Lovers</p></div></footer>
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-6 text-center">
+        <div class="flex justify-center gap-6 mb-4 text-orange-400 text-xl">
+          <i class="fab fa-spotify"></i><i class="fab fa-apple"></i
+          ><i class="fab fa-youtube"></i>
+        </div>
+        <p class="text-sm text-gray-400">
+          © 2026 Sheila On 7 Fan Gallery — Untuk para pecinta musik Indonesia.
+          All rights reserved.
+        </p>
+        <p class="text-xs text-gray-500 mt-2">
+          Didedikasikan untuk seluruh SO7 Lovers
+        </p>
+      </div>
+    </footer>
 
     <!-- MODAL LIGHTBOX -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-overlay" style="background: rgba(0,0,0,0.85);"><div class="relative max-w-4xl w-full mx-4 modal-content"><button id="closeModalBtn" class="absolute -top-12 right-0 text-white text-3xl hover:text-orange-300 transition"><i class="fas fa-times-circle"></i></button><img id="modalImage" src="" alt="Gallery preview" class="w-full rounded-2xl shadow-2xl border-4 border-white/30"></div></div>
+    <div
+      id="imageModal"
+      class="fixed inset-0 z-50 hidden flex items-center justify-center modal-overlay"
+      style="background: rgba(0, 0, 0, 0.85)"
+    >
+      <div class="relative max-w-4xl w-full mx-4 modal-content">
+        <button
+          id="closeModalBtn"
+          class="absolute -top-12 right-0 text-white text-3xl hover:text-orange-300 transition"
+        >
+          <i class="fas fa-times-circle"></i></button
+        ><img
+          id="modalImage"
+          src=""
+          alt="Gallery preview"
+          class="w-full rounded-2xl shadow-2xl border-4 border-white/30"
+        />
+      </div>
+    </div>
 
     <!-- JS Eksternal -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
